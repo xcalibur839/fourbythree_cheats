@@ -28,7 +28,7 @@ while(working_date >= genesis_date):
 game_entry = ""
 print("Game Data")
 for game, vals in results[0].items():
-    game_entry += f"localStorage.setItem('x43_game_{game}','{json.dumps(vals).replace(" ", "")}'); recordHistory(); "
+    game_entry += f"localStorage.setItem('x43_game_{game}','{json.dumps(vals).replace(" ", "")}'); "
 print(game_entry, end = "\n\n")
 
 hist = history.generate(results)
@@ -48,4 +48,4 @@ stats_entry = f"localStorage.setItem('x43_stats', '{json.dumps({
 print("Stats")
 print(stats_entry)
 
-pyperclip.copy(game_entry + hist_entry + stats_entry + "")
+pyperclip.copy(game_entry + "recordHistory(); " + hist_entry + stats_entry)
