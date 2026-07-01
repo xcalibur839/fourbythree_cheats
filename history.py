@@ -1,8 +1,13 @@
-import json, datetime as dt
+import json, datetime as dt, os
+
+history_file = "history.json"
+if not os.path.exists(history_file):
+    with open(history_file, "w") as hist:
+        hist.write("{}")
 
 def generate(games: list, genesis_date: dt.datetime = dt.datetime.strptime("2026-06-11", "%Y-%m-%d")):
     source = {}
-    with open("history.json", "r") as hist:
+    with open(history_file, "r") as hist:
         source = json.load(hist)
     
     for game in games:
@@ -24,7 +29,7 @@ def generate(games: list, genesis_date: dt.datetime = dt.datetime.strptime("2026
                     "db": 1,
                     "fast": 1,
                     "rb": 0,
-                    "p": 1,
+                    "p": 0,
                     "ad": 1,
                     "gold": 1,
                     "silver": 0,
@@ -33,6 +38,9 @@ def generate(games: list, genesis_date: dt.datetime = dt.datetime.strptime("2026
 
             source[key]['ms'] = vals['sms']
             source[key]['ts'] = vals['t0']
+
+    with open(history_file, "w") as hist:
+        hist.write(json.dumps(source, indent = 4))
 
     return source
 

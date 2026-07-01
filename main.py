@@ -18,12 +18,24 @@ genesis_date = datetime.strptime("2026-06-11", "%Y-%m-%d")
 working_date = datetime.now() if args.date is None else datetime.strptime(args.date, "%Y-%m-%d")
 solved_count = 0
 
+hist_data = {}
+with open("history.json", "r") as hist_file:
+    hist_data = json.load(hist_file)
+
 while(working_date >= genesis_date):
-    results.append(puzzle.solve(working_date.strftime("%Y-%m-%d"), t0 = args.time, sms = args.solved))
+    formatted_date = working_date.strftime("%Y-%m-%d")
+    working_date -= timedelta(days = 1)
+    if formatted_date in hist_data:
+        continue
+
+    results.append(puzzle.solve(formatted_date, t0 = args.time, sms = args.solved))
     solved_count += 1
     if args.limit != 0 and solved_count >= args.limit:
         break
-    working_date -= timedelta(days = 1)
+
+if not len(results) > 0:
+    print("No new game data was generated because you already have the top score")
+    quit()
 
 game_entry = ""
 print("Game Data")
