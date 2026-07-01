@@ -60,4 +60,4 @@ stats_entry = f"localStorage.setItem('x43_stats', '{json.dumps({
 print("Stats")
 print(stats_entry)
 
-pyperclip.copy(game_entry + "recordHistory(); " + hist_entry + stats_entry)
+pyperclip.copy(game_entry + hist_entry + stats_entry + "restoreGame(loadGame()); endGame(); location.reload();")
