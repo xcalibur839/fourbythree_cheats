@@ -29,7 +29,7 @@ def generate(games: list, genesis_date: dt.datetime = dt.datetime.strptime("2026
                     "db": 1,
                     "fast": 1,
                     "rb": 0,
-                    "p": 0,
+                    "p": 1,
                     "ad": 1,
                     "gold": 1,
                     "silver": 0,
@@ -62,7 +62,7 @@ if __name__ == "__main__":
             ],
             "solved":[3,0,1,2],
             "m":0,
-            "p":0,
+            "p":1,
             "g":[
                 ["CATCH","BOUNTY","YIELD"],
                 ["CATCH","LATCH","BOLT"],

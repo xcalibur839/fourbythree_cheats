@@ -51,7 +51,7 @@ print(hist_entry, end = "\n\n")
 hist_len = len(hist)
 best = 205 + hist_len
 stats_entry = f"localStorage.setItem('x43_stats', '{json.dumps({
-    "played": hist_len,
+    "played": hist_len - 1,
     "won": hist_len,
     "perfect": hist_len,
     "best": best,
