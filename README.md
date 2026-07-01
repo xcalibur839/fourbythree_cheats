@@ -5,7 +5,7 @@ There really isn't a point to cheating at this game since there are no leaderboa
 Creating this was a fun little reverse engineering challenge for myself and really nothing more. If you want to use it to trick your friends for some reason, or look through the code to get an understanding of how the game records game data, history, and stats, have at it.
 
 ## Dependencies:
-1.  Unix-like terminal
+1.  Unix-like terminal (bash/fish/zsh/etc. on Linux/Mac, WSL on Windows)
 2.  python 3
 3.  wget
 
